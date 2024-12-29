@@ -33,33 +33,33 @@ button_container.children[1].addEventListener('click', function () {
 
 //#endregion
 
-let card_play_buttons = document.getElementsByClassName('play_button');
-let about_tag_list = document.getElementsByClassName('about_tag');
+//#region -- //! FETCH FOR CARDS
 
-for (let i = 0; i < card_play_buttons.length; i++) {
-    card_play_buttons[i].addEventListener('click', function (e) {
+let editors_pick_cards = document.getElementsByClassName('e_card');
 
-        if (e.target.className.includes('fa-circle-play')) {
-            e.target.className = "play_button fa-solid fa-circle-pause";
-            e.target.parentNode.children[0].play();
-
-            for (let j = 0; j < card_play_buttons.length; j++) {
-                if (i != j) {
-                    card_play_buttons[j].className = "play_button fa-solid fa-circle-play";
-                    card_play_buttons[j].parentNode.children[0].pause();
+fetch('http://127.0.0.1:8000/api/editorspicks/')
+    .then(res => res.json())
+    .then(data => {
+        console.log(editors_pick_cards[0].children);
+        console.log(data);
+        for (let i = 0; i < editors_pick_cards.length; i++) {
+            if (i < data.length) {
+                if (typeof (data[i].tag) == "string") {
+                    const tag = document.createElement('div');
+                    tag.className = 'tag entertainment';
+                    tag.innerText = data[0].tag
+                    editors_pick_cards[i].children[2].appendChild(tag);
+                } else {
+                    for (let k = 0; k < data[i].tag.length; k++) {
+                        const tag = document.createElement('div');
+                        tag[k].className = 'tag entertainment';
+                        tag[k].innerText = data[i].tag[k];
+                        editors_pick_cards[i].children[2].appendChild(tag[k])
+                    }
                 }
+                editors_pick_cards[i].children[3].innerText = data[i].title
+                editors_pick_cards[i].children[4].innerText = data[i].description
             }
         }
-
-        else {
-            e.target.className = "play_button fa-solid fa-circle-play";
-            e.target.parentNode.children[0].pause();
-
-            for (let j = 0; j < card_play_buttons.length; j++) {
-                if (i != j) {
-                    card_play_buttons[j].className = "play_button fa-solid fa-circle-pause";
-                }
-            }
-        }
-    });
-}
+    })
+//#endregion

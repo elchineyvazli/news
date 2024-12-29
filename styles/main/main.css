@@ -285,26 +285,28 @@ main #editors_pick #editors_pick_cards {
   flex-wrap: wrap;
   gap: 10px;
 }
-main #editors_pick #editors_pick_cards .card {
+main #editors_pick #editors_pick_cards .e_card {
   width: 32%;
   height: 250px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   position: relative;
+  color: white;
 }
-main #editors_pick #editors_pick_cards .card video {
+main #editors_pick #editors_pick_cards .e_card .e_card_video {
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
+  z-index: -1;
 }
-main #editors_pick #editors_pick_cards .card .play_button::before {
+main #editors_pick #editors_pick_cards .e_card .play_button::before {
   position: absolute;
   top: 13px;
   left: 10px;
   border-radius: 50%;
   background-color: black;
 }
-main #editors_pick #editors_pick_cards .card .about_tag {
+main #editors_pick #editors_pick_cards .e_card .about_tag {
   width: 90%;
   height: 20px;
   display: flex;
@@ -312,6 +314,42 @@ main #editors_pick #editors_pick_cards .card .about_tag {
   position: absolute;
   top: 10px;
   left: 38px;
+}
+main #editors_pick #editors_pick_cards .e_card .e_card_h1 {
+  font-size: 20px;
+  position: absolute;
+  top: 40px;
+  left: 10px;
+}
+main #editors_pick #editors_pick_cards .e_card .e_card_p {
+  font-size: 13px;
+  position: absolute;
+  top: 100px;
+  left: 10px;
+}
+main #editors_pick #editors_pick_cards .e_card .e_card_inf_con {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  position: absolute;
+  left: 10px;
+  bottom: 0;
+}
+main #editors_pick #editors_pick_cards .e_card .e_card_inf_con1, main #editors_pick #editors_pick_cards .e_card .e_card_inf_con2 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+main #editors_pick #editors_pick_cards .e_card .e_card_inf_con1 .view_count, main #editors_pick #editors_pick_cards .e_card .e_card_inf_con2 .view_count {
+  font-size: 12px;
+  position: relative;
+}
+main #editors_pick #editors_pick_cards .e_card .e_card_inf_con1 .view_count::before, main #editors_pick #editors_pick_cards .e_card .e_card_inf_con2 .view_count::before {
+  content: "views";
+  position: absolute;
+  top: -1px;
+  right: -35px;
 }
 main #this_weeks_hottest {
   width: 100%;

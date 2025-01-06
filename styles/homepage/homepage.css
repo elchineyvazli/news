@@ -252,13 +252,13 @@ main #this_weeks_hottest_cards .t_card_img1 {
   background-position: -150px 0;
 }
 main #this_weeks_hottest_cards .t_card_img2 {
-  background-position: 10px 0;
+  background-position: -30px 0;
 }
 main #this_weeks_hottest_cards .t_card_img3 {
-  background-position: -40px 0;
+  background-position: -70px 0;
 }
 main #this_weeks_hottest_cards .t_card_img4 {
-  background-position: -100px 0;
+  background-position: -130px 0;
 }
 main #this_weeks_hottest_cards .t_card_info {
   width: 70%;

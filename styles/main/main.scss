@@ -23,6 +23,10 @@ button {
     justify-content: center;
 }
 
+input, textarea {
+    outline: none;
+}
+
 body {
     width: 100%;
     max-width: 1515px;
@@ -187,11 +191,4 @@ nav {
 
 .food_drinks {
     background-color: #61C436;
-}
-
-
-mark {
-    background-color: yellow;
-    color: black;
-    font-weight: bold;
 }

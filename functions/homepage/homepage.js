@@ -94,33 +94,6 @@ const get_the_card_infos = async () => {
 
 get_the_card_infos();
 
-
-// fetch('http://127.0.0.1:8000/api/ecards/')
-//     .then(res => res.json())
-//     .then(data => {
-//         try {
-//             for (let i = 0; i < editors_pick_cards.length; i++) {
-//                 const tag_list = data[i].e_tag;
-//                 if (i < data.length) {
-//                     if (editors_pick_cards[i] != undefined) {
-//                         for (let k = 0; k < tag_list.length; k++) {
-//                             const tag = document.createElement('div');
-//                             tag.className = `tag ${tag_list[k].toLowerCase() == "food & drinks" ? "food_drinks" : tag_list[k].toLowerCase()}`;
-//                             tag.innerText = tag_list[k];
-//                             editors_pick_cards[i].children[2].appendChild(tag);
-//                         }
-//                         editors_pick_cards[i].children[3].innerText = data[i].e_title;
-//                         editors_pick_cards[i].children[4].innerText = data[i].e_desc;
-//                         e_views_counts[i].innerText = data[i].e_views_count;
-//                     }
-//                 }
-//             }
-//         }
-//         catch {
-//             console.error("API ERROR");
-//         }
-//     });
-
 //#endregion
 
 //#region -- //! FETCH FOR TCARDS
@@ -273,5 +246,87 @@ for (let i = 0; i < play_buttons.length; i++) {
         fetchAndUpdateViews(i + 1);
     });
 }
+
+//#endregion
+
+//#region //! SHOW COMMENTS
+const comments = document.getElementById
+
+const get_comments = async () => {
+    const comments_url = "http://127.0.0.1:8000/api/comments/";
+    const commentsContainer = document.getElementById('commentsContainer');
+
+    try {
+        const getResponse = await fetch(comments_url);
+        const cardData = await getResponse.json();
+
+        if (getResponse.ok) {
+            for (let i = 0; i < cardData.length; i++) {
+                const comment = document.createElement('div');
+                comment.className = "comment";
+                const username = document.createElement('h4');
+                const message = document.createElement('p');
+                username.innerText = cardData[i].username;
+                message.innerText = cardData[i].message;
+                comment.appendChild(username);
+                comment.appendChild(message);
+                commentsContainer.append(comment);
+            }
+        }
+    }
+    catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+get_comments();
+
+//#endregion
+
+//#region //!SEND MESSAGES
+
+const usernameInput = document.getElementsByClassName('usernameInput')[0];
+const messageInput = document.getElementsByClassName('messageInput')[0];
+const ftr_subs_btn = document.getElementsByClassName('ftr_subs_btn')[0];
+
+
+const sendMessages = async () => {
+    const comments_url = "http://127.0.0.1:8000/api/comments/";
+    const commentsContainer = document.getElementById('commentsContainer');
+
+    try {
+        const postResponse = await fetch(comments_url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username: usernameInput.value,
+                message: messageInput.value,
+            })
+        });
+
+
+        if (postResponse.ok) {
+            const comment = document.createElement('div');
+            const username = document.createElement('h4');
+            const message = document.createElement('p');
+
+            comment.className = "comment";
+
+            username.innerText = usernameInput.value;
+            message.innerText = messageInput.value;
+
+            comment.appendChild(username);
+            comment.appendChild(message);
+            commentsContainer.append(comment);
+        }
+    }
+    catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+ftr_subs_btn.addEventListener('click', sendMessages)
 
 //#endregion

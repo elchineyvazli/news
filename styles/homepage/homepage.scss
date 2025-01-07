@@ -43,16 +43,16 @@ header {
             background-repeat: no-repeat;
 
             &1 {
-                background-image: url(../../images/slide_images/1.jpg);
+                background-image: url(../../images/slide_images/1.jpeg);
 
             }
 
             &2 {
-                background-image: url(../../images/slide_images/2.jpg);
+                background-image: url(../../images/slide_images/2.jpeg);
             }
 
             &3 {
-                background-image: url(../../images/slide_images/3.jpg);
+                background-image: url(../../images/slide_images/3.jpeg);
             }
 
             .hdr_tag_con {
@@ -170,6 +170,11 @@ main {
                 height: 250px;
                 color: white;
                 background-color: rgba(black, .1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 30px;
+                color: #8b8b8b;
             }
 
             .e_card {
@@ -354,6 +359,47 @@ main {
         }
     }
 
+    #comments {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        h1 {
+            font-size: 30px;
+            font-weight: 500;
+        }
+
+        &Container {
+            width: 100%;
+            max-height: 400px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+
+            .comment {
+                width: 32%;
+                height: 60px;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                padding: 4px 8px;
+                border-radius: 5px;
+                background-color: #F0F2F5;
+                border: solid 2px #99A6BB;
+
+                h4 {
+                    font-size: 14px;
+                }
+
+                p {
+                    font-size: 12px;
+                    color: #768091;
+                }
+            }
+        }
+    }
+
 }
 
 footer {
@@ -434,16 +480,22 @@ footer {
                 font-size: 20px;
             }
 
-            #ftr_part2_input {
+            .ftr_part2_input {
                 width: 260px;
-                height: 40px;
                 padding-left: 10px;
-                outline: none;
+            }
+
+            .usernameInput{
+                height: 30px;
+            }
+
+            .messageInput{
+                height: 80px;
             }
 
             .ftr_subs_btn {
                 width: 260px;
-                height: 40px;
+                height: 30px;
                 color: white;
                 background-color: #009CFF;
             }
